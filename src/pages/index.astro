@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SkillsList from '../components/SkillsList.astro';
+import { site, socials } from '../data/site';
+
+// Featured first, then by `order`, then newest date first.
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => {
+    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+    if (a.data.order !== b.data.order) return a.data.order - b.data.order;
+    return (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0);
+  },
+);
+---
+
+<BaseLayout>
+  {/* Hero / professional summary */}
+  <section class="mb-14">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+      {site.name}
+    </h1>
+    <p class="mt-2 text-lg font-medium text-brand-600 dark:text-brand-400">
+      {site.tagline}
+    </p>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+      {site.summary}
+    </p>
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      {
+        socials.map((s) => (
+          <a
+            href={s.href}
+            class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-brand-400 hover:text-brand-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-brand-500 dark:hover:text-brand-400"
+            {...s.href.startsWith('http')
+              ? { target: '_blank', rel: 'noopener noreferrer' }
+              : {}}
+          >
+            {s.label}
+          </a>
+        ))
+      }
+      {
+        site.resumeUrl && (
+          <a
+            href={site.resumeUrl}
+            class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-700"
+          >
+            Download Résumé
+          </a>
+        )
+      }
+    </div>
+  </section>
+
+  {/* Skills */}
+  <section class="mb-14">
+    <h2 class="mb-5 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+      Skills
+    </h2>
+    <SkillsList />
+  </section>
+
+  {/* Projects */}
+  <section>
+    <h2 class="mb-5 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+      Projects
+    </h2>
+    {
+      projects.length > 0 ? (
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {projects.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      ) : (
+        <p class="text-slate-500 dark:text-slate-400">
+          Projects coming soon — add Markdown files to{' '}
+          <code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm dark:bg-slate-800">
+            src/content/projects/
+          </code>
+          .
+        </p>
+      )
+    }
+  </section>
+</BaseLayout>

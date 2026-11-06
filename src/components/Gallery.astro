@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  screenshots: ImageMetadata[];
+  videoUrl?: string;
+}
+
+const { screenshots, videoUrl } = Astro.props;
+
+/** Turn a YouTube/Vimeo watch URL into an embeddable one. */
+function toEmbedUrl(url: string): string | null {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./, '');
+    if (host === 'youtu.be') {
+      return `https://www.youtube.com/embed/${u.pathname.slice(1)}`;
+    }
+    if (host.endsWith('youtube.com')) {
+      if (u.pathname.startsWith('/embed/')) return url;
+      const id = u.searchParams.get('v');
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    if (host.endsWith('vimeo.com')) {
+      if (host === 'player.vimeo.com') return url;
+      const id = u.pathname.split('/').filter(Boolean).pop();
+      return id ? `https://player.vimeo.com/video/${id}` : null;
+    }
+    return url;
+  } catch {
+    return null;
+  }
+}
+
+const embedUrl = videoUrl ? toEmbedUrl(videoUrl) : null;
+---
+
+{
+  embedUrl && (
+    <div class="mb-8">
+      <h2 class="mb-3 text-xl font-semibold tracking-tight text-slate-900 dark:text-white">
+        Demo
+      </h2>
+      <div class="aspect-video w-full overflow-hidden rounded-xl border border-slate-200 bg-black dark:border-slate-800">
+        <iframe
+          src={embedUrl}
+          title="Project demo video"
+          loading="lazy"
+          class="h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
+    </div>
+  )
+}
+
+{
+  screenshots.length > 0 && (
+    <div class="mb-8">
+      <h2 class="mb-3 text-xl font-semibold tracking-tight text-slate-900 dark:text-white">
+        Screenshots
+      </h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {screenshots.map((shot, i) => (
+          <a
+            href={shot.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block overflow-hidden rounded-xl border border-slate-200 bg-slate-100 transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-800"
+          >
+            <Image
+              src={shot}
+              alt={`Screenshot ${i + 1}`}
+              width={1200}
+              class="h-full w-full object-cover"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
