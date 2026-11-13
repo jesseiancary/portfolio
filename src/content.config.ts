@@ -10,7 +10,7 @@ const projects = defineCollection({
       title: z.string(),
       // Short blurb shown on the homepage card.
       description: z.string(),
-      // Card thumbnail — optimized at build time.
+      // Card thumbnail - optimized at build time.
       thumbnail: image(),
       // Detail-page gallery images.
       screenshots: z.array(image()).default([]),

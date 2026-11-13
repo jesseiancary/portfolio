@@ -3,6 +3,7 @@
 // no component changes needed.
 
 export const site = {
+  header: 'Portfolio',
   name: 'Jesse Ian Cary',
   // Shown in the browser tab and as the default OpenGraph title.
   title: 'Jesse Ian Cary - Full-Stack Software Engineer & Architect',
@@ -13,12 +14,12 @@ export const site = {
   tagline: 'Full-Stack Software Engineer / Architect',
   // City, shown as a muted line under the tagline. Set to null to hide.
   location: 'Tucson, AZ',
-  // 2–4 sentence professional summary for the hero section.
+  // 2-4 sentence professional summary for the hero section.
   summary:
     "I'm a software engineer and application architect with 18 years of experience owning products end to end - from business need through architecture and hands-on implementation to production. I specialize in multi-tenant SaaS platforms and secure systems for regulated domains, including PCI DSS Level 1 payments and HIPAA-governed healthcare (HL7/EMR) integrations. Below are side projects I've built, each with source code and a live demo. I'm currently looking for a full-time role in fintech, healthtech, or SaaS.",
   email: 'jesseiancary@gmail.com',
   // Optional résumé in /public. Set to null to hide the download button.
-  resumeUrl: '/resume.pdf',
+  resumeUrl: null,
 } as const;
 
 // Social / contact links rendered in the header and footer.
