@@ -14,7 +14,7 @@ Add a new project to the portfolio: **$ARGUMENTS**
    (Overview / What I built / Challenges / Outcome, or similar).
 4. Ask me for any details you don't know (GitHub URL, live URL, tech stack,
    whether it should be `featured`) rather than guessing.
-5. Remind me which images to drop into `src/assets/projects/` — a 16:9
-   thumbnail and 1–2 screenshots — and reference them with relative paths
+5. Remind me which images to drop into `src/assets/projects/` - a 16:9
+   thumbnail and 1-2 screenshots - and reference them with relative paths
    (`../../assets/projects/<slug>-thumb.png`). Do not invent image files.
 6. Run `npm run build` to confirm the schema validates and the page renders.

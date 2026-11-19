@@ -26,7 +26,7 @@ npm run preview   # preview the production build locally
 
 Each project is one Markdown (or `.mdx`) file in `src/content/projects/`. The
 filename becomes the URL slug (`taskflow.md` → `/projects/taskflow`). Put images
-in `src/assets/projects/` — they are optimized to WebP at build time.
+in `src/assets/projects/` - they are optimized to WebP at build time.
 
 ```markdown
 ---
@@ -52,14 +52,14 @@ The Markdown body here is the long-form write-up shown on the detail page.
 ```
 
 The full schema (and which fields are required) lives in `src/content.config.ts`.
-`videoUrl` accepts normal YouTube/Vimeo watch links — they are converted to embeds
+`videoUrl` accepts normal YouTube/Vimeo watch links - they are converted to embeds
 automatically.
 
 ## Deploying to Vercel
 
 1. Push this repo to GitHub.
 2. In Vercel, **Add New → Project** and import the repo. Vercel auto-detects Astro
-   (build command `npm run build`, output `dist`) — no config needed.
+   (build command `npm run build`, output `dist`) - no config needed.
 3. Add your custom domain under **Settings → Domains**, then point your
    registrar's DNS at Vercel (A record `76.76.21.21`, or CNAME
    `cname.vercel-dns.com` for a subdomain). SSL is automatic.
