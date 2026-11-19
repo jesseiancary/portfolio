@@ -14,6 +14,44 @@ tech:
   - OpenAI SDK
   - React
   - PostgreSQL
+techStack:
+  - label: Backend
+    items:
+      - Node.js
+      - TypeScript
+      - Express
+      - PostgreSQL
+      - Prisma
+      - Zod
+      - OpenAI SDK
+      - pino
+  - label: Frontend
+    items:
+      - React
+      - TypeScript
+      - Vite
+      - TailwindCSS
+      - shadcn/ui
+      - TanStack Query
+      - React Router
+      - SSE streaming
+  - label: Testing & quality
+    items:
+      - Vitest
+      - Supertest
+      - Playwright
+      - LLM eval harness
+      - ESLint
+      - Prettier
+  - label: Ops
+    items:
+      - Docker Compose
+      - GitHub Actions CI
+      - Railway
+  - label: Architecture
+    items:
+      - pnpm monorepo
+      - "@wfi/contracts shared Zod package"
 featured: true
 order: 1
 date: 2026-11-19
