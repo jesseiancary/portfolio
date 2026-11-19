@@ -10,7 +10,7 @@ const projects = defineCollection({
       title: z.string(),
       // Short blurb shown on the homepage card.
       description: z.string(),
-      // Card thumbnail — optimized at build time.
+      // Card thumbnail - optimized at build time.
       thumbnail: image(),
       // Detail-page gallery images.
       screenshots: z.array(image()).default([]),
@@ -18,8 +18,19 @@ const projects = defineCollection({
       videoUrl: z.string().url().optional(),
       githubUrl: z.string().url().optional(),
       liveUrl: z.string().url().optional(),
-      // Tech-stack tags.
+      // Tech-stack tags (short; shown as chips on the card and as the
+      // detail-page fallback when techStack is absent).
       tech: z.array(z.string()).default([]),
+      // Optional grouped tech stack for the detail page: labeled groups of
+      // chips (e.g. Backend / Frontend / Ops). Falls back to flat `tech`.
+      techStack: z
+        .array(
+          z.object({
+            label: z.string(),
+            items: z.array(z.string()),
+          }),
+        )
+        .default([]),
       // Surface this project first on the homepage.
       featured: z.boolean().default(false),
       // Lower numbers sort earlier; ties break on date (newest first).
