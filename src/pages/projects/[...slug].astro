@@ -47,7 +47,7 @@ const { Content } = await render(project);
       </p>
 
       {
-        techStack.length > 0 ? (
+        techStack?.length > 0 ? (
           <div class="mt-5 space-y-3">
             {techStack.map((group) => (
               <div class="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:gap-3">
