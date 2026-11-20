@@ -1,7 +1,7 @@
 ---
 title: Photo Relief
 description: A browser-based tool that turns photos into 3D-printable, black & white relief models - perceptual color banding, watertight meshes, and one-click 3MF export, all client-side.
-thumbnail: ../../assets/projects/photo-relief-thumb.png
+thumbnail: ../../assets/projects/photo-relief-shot-2.png
 screenshots:
   - ../../assets/projects/photo-relief-shot-1.png
   - ../../assets/projects/photo-relief-shot-2.png
