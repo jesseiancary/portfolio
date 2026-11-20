@@ -2,11 +2,12 @@
 title: Webhook Failure Investigator
 description: An AI assistant that diagnoses failed webhook deliveries and explains the root cause in plain language, with every claim grounded in the actual delivery logs rather than guessed. Full-stack TypeScript with a hallucination-resistant LLM pipeline (structured output, tool calling, and evals).
 
-thumbnail: ../../assets/projects/wfi-thumb.png
+thumbnail: ../../assets/projects/wfi-dashboard.png
 screenshots:
-  - ../../assets/projects/wfi-shot-1.png
-  - ../../assets/projects/wfi-shot-2.png
-  - ../../assets/projects/wfi-shot-3.png
+  - ../../assets/projects/wfi-dashboard.png
+  - ../../assets/projects/wfi-diagnosis.png
+  - ../../assets/projects/wfi-citation.png
+  - ../../assets/projects/wfi-chat.png
 githubUrl: https://github.com/jesseiancary/webhook-failure-investigator
 liveUrl: https://webhook-failure-investigator-production.up.railway.app/
 tech:
