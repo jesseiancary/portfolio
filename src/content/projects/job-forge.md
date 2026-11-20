@@ -1,7 +1,7 @@
 ---
 title: Job Forge
 description: An AI-powered job-application toolkit that generates tailored resumes and cover letters from LaTeX templates using the Claude Agent SDK - cloned and run locally, with personal data kept off version control.
-thumbnail: ../../assets/projects/job-forge-thumb.png
+thumbnail: ../../assets/projects/job-forge-shot-1.png
 screenshots:
   - ../../assets/projects/job-forge-shot-1.png
   - ../../assets/projects/job-forge-shot-2.png
